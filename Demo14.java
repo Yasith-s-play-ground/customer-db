@@ -4,8 +4,7 @@ void main() {
     String dataRow;
     String name, mobileNo, landPhone;
 
-    final String H_LINE = "+" + "-".repeat(5) + "+" + "-".repeat(8) +
-            "+" + "-".repeat(12) + "+" + "-".repeat(12) + "+";
+    final String H_LINE = STR."+\{"-".repeat(5)}+\{"-".repeat(8)}+\{"-".repeat(12)}+\{"-".repeat(12)}+";
 
     String[][] customers = {{"1", "2", "3", "4"}, {"Kasun", "Nuwan", "Ruwan", "Supun"}, {"077-1234567", "078-1234567", "071-1234567", "041-1234567"}, {"011-1234567", "-", null, "033-1234567"}};
 
@@ -16,8 +15,8 @@ void main() {
     for (int i = 0; i < noOfCustomers; i++) {
         customerId = getId(customers[0][i]);
         name = getName(customers[1], i);
-        mobileNo = getMobile(customers[2], i);
-        landPhone = getLandLine(customers[3], i);
+        mobileNo = getPhoneNo(customers[2], i);
+        landPhone = getPhoneNo(customers[3], i);
 
         dataRow = String.format("|%-5s|%-8s|%-12s|%-12s|", customerId, name, mobileNo, landPhone);
 
@@ -38,12 +37,8 @@ String getId(String id) {
     return "C-%03d".formatted(Integer.parseInt(id));
 }
 
-String getMobile(String[] mobileNumbers, int index) {
-    return mobileNumbers[index];
-}
-
-String getLandLine(String[] landLines, int index) {
-    return landLines[index] != null ? landLines[index] : "NA";
+String getPhoneNo(String[] phoneNos, int index) {
+    return phoneNos[index] != null ? phoneNos[index] : "NA";
 }
 
 void printHeadLinesOfTable(String H_LINE) {
